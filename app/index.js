@@ -3,6 +3,58 @@
 //spreadOperator();
 //restParameters();
 //destructure();
+//arrowFunctions();
+arrowFunctions2();
+
+function arrowFunctions2() {
+    let values = [20,30,40];
+    let doubleValues = values.map(value => value*2);
+    console.log(doubleValues);
+
+    // old way
+    let triple = (n) => {
+        return n*3;
+    }
+    let tripled = values.map(triple);
+    console.log(tripled);
+
+    let points = [7,16,21,4,3,22,5];
+    // we want point totals that are over 15
+    // let highScores = points.filter((n) => {
+    //     return n>15;
+    let moreEfficientFilter = points.filter((score)=>score>15);
+    //console.log(highScores);
+    console.log(moreEfficientFilter);
+}
+
+function arrowFunctions(){
+    cheer();
+    // this is a function declaration, therefore the function is not anonymous
+    function cheer() {
+        console.log("Woohoo!");
+    }
+    // to make it anonymous, we will declare a cheer variable and set it to a function with the same behavior
+    // this is an anonymous function declaration
+    var cheer2 = function(){
+        console.log("WOOHOO!");
+    }
+    cheer2();
+
+    setTimeout(function(){
+        console.log("Woohoo!");
+    }, 3000);
+
+    setTimeout(() => {
+        console.log("Woohoo!");
+    }, 5000);
+
+    // even though this is declared and called after the others, since they are callback functions this will run first since
+    // all pending javascript needs to run before the callback happens
+    let cheer3 = () => {
+        console.log("Woohoo for the last time.");
+    };
+    cheer3();
+}
 
 function destructure() {
     let z = [4,5,6];
