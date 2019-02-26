@@ -1,10 +1,66 @@
+import {fellowship, total } from './fellowship';
+import {add, multiply} from './math';
+// importing only the default means we won't have the addThree function but can forego the curly braces
+import multiplyBy3 from './otherMath';
 //variables();
 //templates();
 //spreadOperator();
 //restParameters();
 //destructure();
 //arrowFunctions();
-arrowFunctions2();
+//arrowFunctions2();
+//stringHelperMethods();
+//numberHelperMethods();
+modules();
+
+function modules(){
+    console.log(fellowship, total);
+    console.log(add(5,10));
+    console.log(multiply(5,10));
+    console.log(multiplyBy3(20));
+}
+
+
+function numberHelperMethods(){
+    // the isFinite method helps with data validation
+    const addToCart = (item, number) => {
+        return Number.isFinite(number);
+    }
+    console.log(addToCart('shirt', 5));
+    console.log(addToCart('shirt', Infinity));
+    console.log(addToCart('shirt', Math.pow(2,54)));
+
+    // ES6 also allows us to check whether the integer is in a safe range
+    const addSafeToCart = (item, number) => {
+        return Number.isSafeInteger(number);
+    }
+    console.log(addSafeToCart('hat', Math.pow(2,54)));
+
+}
+
+function stringHelperMethods(){
+    // strings have a .repeat function
+    let b = "wooh " + "oo".repeat(50);
+    console.log(b);
+
+    // we can .repeat() empty strings
+    let c = "wooh" + " ".repeat(50) + "oo";
+    console.log(c);
+
+    // it also works for template strings
+    let d = `WOOH${"OO".repeat(50)}`;
+    console.log(d);
+
+    // startsWith and endsWith return boolean values
+    let e = "butterfly";
+    console.log(e.startsWith("butter"));
+    console.log(e.startsWith("fly"));
+    console.log(e.endsWith("fly"));
+    // includes does the same
+    console.log(e.includes("butter"));
+    console.log(e.includes("fly"));
+    console.log(e.includes("caterpillar"));
+}
 
 function arrowFunctions2() {
     let values = [20,30,40];
