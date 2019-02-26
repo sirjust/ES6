@@ -2,6 +2,7 @@ import {fellowship, total } from './fellowship';
 import {add, multiply} from './math';
 // importing only the default means we won't have the addThree function but can forego the curly braces
 import multiplyBy3 from './otherMath';
+import Animal from './animals';
 //variables();
 //templates();
 //spreadOperator();
@@ -11,7 +12,14 @@ import multiplyBy3 from './otherMath';
 //arrowFunctions2();
 //stringHelperMethods();
 //numberHelperMethods();
-modules();
+//modules();
+useAnimals();
+
+function useAnimals() {
+    let king = new Animal('Mufasa', 4.5);
+    console.log(king);
+    king.hello();
+}
 
 function modules(){
     console.log(fellowship, total);
