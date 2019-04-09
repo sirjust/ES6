@@ -3,6 +3,8 @@ import {add, multiply} from './math';
 // importing only the default means we won't have the addThree function but can forego the curly braces
 import multiplyBy3 from './otherMath';
 import Animal from './animals';
+import Calculator from './calculator';
+import {a, numSet, chars_set} from './set';
 //variables();
 //templates();
 //spreadOperator();
@@ -13,7 +15,63 @@ import Animal from './animals';
 //stringHelperMethods();
 //numberHelperMethods();
 //modules();
-useAnimals();
+//useAnimals();
+//extendAnimal();
+//useCalculator();
+//instantiateWizard();
+useSet();
+
+function useSet(){
+    console.log(a);
+    console.log(a.size);
+    console.log(a.has(5));
+    console.log(a.has(7));
+
+    console.log(numSet);
+    // console.log(numSet.values); // this doesn't do anything
+    for (let element of numSet.values()){
+        console.log(element);
+    }
+    console.log(chars_set);
+}
+
+function Wizard(name, house, pet) {
+    this.name = name;
+    this.house = house;
+    this.pet = pet;
+    this.greet = () => `I'm ${this.name} from ${this.house}.`;
+}
+
+function instantiateWizard(){
+    Wizard.prototype.pet_name;
+    Wizard.prototype.info = function() {return `I have a ${this.pet} named ${this.pet_name}.`;}
+    let Harry = new Wizard("Harry Potter", "Gryffindor", "Owl");
+    Harry.pet_name = "Hedwig";
+    //console.log(Harry);
+    //console.log(Harry.greet());
+    console.log(Harry.info());
+}
+
+function useCalculator() {
+    let a = Calculator.multiply(5,7);
+    let b = Calculator.add(5,7);
+    console.log(a, b);
+}
+
+function extendAnimal() {
+    class Lion extends Animal {
+        constructor(name, height, color){
+            super(name, height);
+            this.color = color;
+        }
+        hello() {
+            console.log(`Hi! I'm ${this.name} from Pride Rock!`);
+        }
+    }
+
+    let son = new Lion("Simba", 2, "golden");
+    son.hello();
+}
 
 function useAnimals() {
     let king = new Animal('Mufasa', 4.5);
@@ -27,7 +85,6 @@ function modules(){
     console.log(multiply(5,10));
     console.log(multiplyBy3(20));
 }
-
 
 function numberHelperMethods(){
     // the isFinite method helps with data validation
@@ -89,6 +146,8 @@ function arrowFunctions2() {
     let moreEfficientFilter = points.filter((score)=>score>15);
     //console.log(highScores);
     console.log(moreEfficientFilter);
+    let noParentheses = points.filter(score => score > 15);
+    console.log(noParentheses);
 }
 
 function arrowFunctions(){
