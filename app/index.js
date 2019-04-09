@@ -5,6 +5,9 @@ import multiplyBy3 from './otherMath';
 import Animal from './animals';
 import Calculator from './calculator';
 import {a, numSet, chars_set} from './set';
+import {myMap, valMap, letterMap} from './Map';
+import {call} from './closures';
+
 //variables();
 //templates();
 //spreadOperator();
@@ -19,7 +22,26 @@ import {a, numSet, chars_set} from './set';
 //extendAnimal();
 //useCalculator();
 //instantiateWizard();
-useSet();
+//useSet();
+//useMap();
+useClosures();
+
+function useClosures() {
+    //console.log(secret); // we expect an error since secret is not defined in the global scope
+    let unveil = call();
+    // due to lexical scoping, the call method retains a reference to the variable within it that can still be accessed after it completes
+    unveil();
+}
+
+function useMap(){
+    //console.log(myMap);
+    //console.log(valMap);
+    for(let [key, value] of valMap.entries()){
+        //console.log(`${key} points to ${value}`);
+    }
+    
+    console.log(letterMap);
+}
 
 function useSet(){
     console.log(a);
