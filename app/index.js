@@ -7,6 +7,10 @@ import Calculator from './calculator';
 import {a, numSet, chars_set} from './set';
 import {myMap, valMap, letterMap} from './Map';
 import {call} from './closures';
+import {addSuffix, product} from './moreClosures';
+import {budget} from './budget';
+// we shouldn't export generators
+import p from './promises.js';
 
 //variables();
 //templates();
@@ -24,7 +28,43 @@ import {call} from './closures';
 //instantiateWizard();
 //useSet();
 //useMap();
-useClosures();
+//useClosures();
+//useMoreClosures();
+//useBudget();
+usePromise();
+
+function usePromise(){
+    console.log(p);
+}
+
+function useBudget() {
+    let wallet = budget();
+    console.log(wallet);
+    wallet.deposit20();
+    console.log(wallet.check());
+    // console.log(wallet.balance); this value is undefined because we don't return the balance, only an object
+    wallet.withdraw20();
+    wallet.deposit20();
+    wallet.deposit20();
+    console.log(wallet.check());
+}
+
+function useMoreClosures() {
+    let add_ness = addSuffix('ness');
+    console.log(add_ness);
+    let h = add_ness("happi");
+    console.log(h);
+
+    let add_full = addSuffix("ful");
+    let f = add_full("fruit");
+    console.log(f);
+
+    let mult5 = product(5);
+    console.log(mult5(3));
+
+    let double = product(2);
+    console.log(double(9));
+}
 
 function useClosures() {
     //console.log(secret); // we expect an error since secret is not defined in the global scope
