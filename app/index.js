@@ -10,7 +10,8 @@ import {call} from './closures';
 import {addSuffix, product} from './moreClosures';
 import {budget} from './budget';
 // we shouldn't export generators
-import p from './promises.js';
+// import p from './promises.js';
+import {root, googleRoot} from './jsonFetch.js';
 
 //variables();
 //templates();
@@ -31,7 +32,19 @@ import p from './promises.js';
 //useClosures();
 //useMoreClosures();
 //useBudget();
-usePromise();
+//usePromise();
+useFetch();
+
+function useFetch(){   
+fetch(root, {method: "GET"})
+    //.then(response => console.log(response));
+    .then(response => response.json())
+    .then(json => console.log(json));
+
+fetch(googleRoot, {method: "GET"})
+    .then(response => response.json())
+    .then(json => console.log(json));
+}
 
 function usePromise(){
     console.log(p);
