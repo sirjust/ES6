@@ -12,6 +12,9 @@ import {budget} from './budget';
 // we shouldn't export generators
 // import p from './promises.js';
 import {root, googleRoot} from './jsonFetch.js';
+import {powers, dotIncludes, arrayIncludes} from './es2017';
+import {obj, keys, values, entries} from './ES2018';
+import {async_one, async_two, async_twoPointFive, async_three, async_four} from './asyncFunctions';
 
 //variables();
 //templates();
@@ -33,7 +36,33 @@ import {root, googleRoot} from './jsonFetch.js';
 //useMoreClosures();
 //useBudget();
 //usePromise();
-useFetch();
+//useFetch();
+//useES2017features();
+//useES2018();
+useAsyncFunctions();
+
+function useAsyncFunctions(){
+    async_one().then(response => console.log(response));
+    async_two().catch(error => console.log(error));
+
+    async_three();
+    async_four();
+}
+
+function useES2018(){
+    console.log(keys);
+    console.log(values);
+    console.log(entries);
+    for(let entry of entries){
+        console.log(`key: ${entry[0]}, value: ${entry[1]}`);
+    }
+}
+
+function useES2017features(){
+    console.log(powers);
+    console.log(dotIncludes);
+    console.log(arrayIncludes);
+}
 
 function useFetch(){   
 fetch(root, {method: "GET"})
