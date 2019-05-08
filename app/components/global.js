@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, InputGroup, Glyphicon, Button } from 'react-bootstrap';
-import { SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG } from 'constants';
+import Gallery from './gallery.js';
 
 class Global extends Component {
     constructor(props){
         super(props);
         this.state = {
-            query: ""
+            query: "",
+            items: []
         }
     }
 
     search() {
-        console.log('search', this.state.query);
+        const BASE_URL = 'https://www.googleapis.com/books/v1/volumes?q=';
+        fetch(`${BASE_URL}${this.state.query}`, { method: 'GET'})
+        .then(response => response.json())
+        .then(json => {
+            let { items } = json;
+            this.setState({items})
+        });
     }
+
     render() {
         return (
             <div className="Global">
@@ -33,6 +41,7 @@ class Global extends Component {
                         </InputGroup.Append>
                     </InputGroup>
                 </FormGroup>
+                <Gallery items={this.state.items}/>
             </div>
         )
     }
